@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        .top-div{
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    background-color: rgb(248, 53, 53);
+   
+    padding-left: 10px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+body{
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+.box{
+    padding: 70px;
+    
+}
+.box-contain{
+    background-color: black;
+    color: white;
+    width:20%;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+
+}
+.box-contain h2{
+    color:rgb(248, 53, 53) ;
+}
+.box-button{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 40px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+.overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.8;
+    z-index: 1;
+    display: none;
+}
+.popup{
+   position: absolute;
+   top: 20%;
+   left: 30%;
+   z-index: 2;
+   background-color: rgb(241, 226, 226);
+   padding: 20px;
+   border-radius: 20px;
+   text-align: center;
+   display: none;
+}
+.popup h2{
+    color: rgb(149, 60, 60);
+}
+.popup input{
+    background: transparent;
+    border: none;
+    width: 100%;
+    border-bottom: solid black 2px;
+    margin: 5px;
+    padding: 5px;
+
+}
+button{
+    height: fit-content;
+    width: fit-content;
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.878);
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+.box-contain button{
+    background-color: red;
+}
+
+    </style>
+</head>
+<body>
+    <div class="top-div">
+        <h1>ADD DETAILS</h1>
+    </div>
+    <br>
+    <br>
+
+    <div class="box">
+       
+       
+        
+    </div>
+    <div class="overlay"></div>
+    <div class="popup">
+        <h2>Add Details</h2>
+        <form>
+            <input type="text" placeholder="Name" id="name"><br>
+            <input type="text" placeholder="Address" id="address"><br>
+            <button id="add-button">Add</button>
+            <button id="cancel-button">Cancel</button>
+        </form>
+
+    </div>
+ <button class="box-button" id="plus-button">+</button>
+ <script>
+    var overlay=document.querySelector(".overlay")
+    var popup=document.querySelector(".popup")
+    var plus=document.getElementById("plus-button")
+
+    plus.addEventListener("click",function(){
+        overlay.style.display="block"
+        popup.style.display="block"
+    })
+    var cancel=document.getElementById("cancel-button")
+    cancel.addEventListener("click",function(event){
+        event.preventDefault()
+        overlay.style.display="none"
+        popup.style.display="none"
+    })
+var box=document.querySelector(".box")
+var addbutton=document.getElementById("add-button")
+var name1=document.getElementById("name")
+var address=document.getElementById("address")
+addbutton.addEventListener("click",function(event){
+    event.preventDefault()
+    var div=document.createElement("div")
+    div.setAttribute("class","box-contain")
+    div.innerHTML=`<h2>${name1.value}</h2>
+            <h5>${address.value}</h5>
+             <button onclick="dele(event)">Delete</button>`
+    console.log(name)
+    box.append(div)
+     overlay.style.display="none"
+    popup.style.display="none"
+})
+function dele(event){
+event.target.parentElement.remove()
+}
+ </script>
+</body>
+</html>
